@@ -35,8 +35,6 @@ jobs:
         uses: mirceanton/action-folder-matrix@v3.0.0
         with:
           path: "./modules"
-          changed-only: true
-          github-token: ${{ github.token }}
 
   tofu-validate:
     name: "Validate (${{ matrix.directory }})"
