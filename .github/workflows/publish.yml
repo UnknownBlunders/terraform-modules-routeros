@@ -5,6 +5,11 @@ on:
   push:
     tags: ['v*']
   workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version tag to publish (e.g. v0.1.0)'
+        required: true
+        type: string
 
 permissions:
   contents: read
@@ -54,7 +59,7 @@ jobs:
       - name: Push module
         env:
           MODULE: ${{ matrix.directory }}
-          VERSION: ${{ github.ref_name }}
+          VERSION: ${{ inputs.version || github.ref_name }}
           REGISTRY: ghcr.io/${{ github.repository }}
         run: |
           oras push "${REGISTRY}/${MODULE}:${VERSION}" \
