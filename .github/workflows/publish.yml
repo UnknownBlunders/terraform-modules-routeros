@@ -64,4 +64,5 @@ jobs:
         run: |
           oras push "${REGISTRY}/${MODULE}:${VERSION}" \
             --artifact-type "application/vnd.opentofu.modulev1+zip" \
+            --disable-path-validation \
             "/tmp/${MODULE}.tar.gz:application/vnd.opentofu.module.layer.v1.tar+gzip"
