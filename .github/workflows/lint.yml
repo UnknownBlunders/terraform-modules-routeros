@@ -89,11 +89,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
 
+      - name: Setup mise
+        uses: jdx/mise-action@e6a8b3978addb5a52f2b4cd9d91eafa7f0ab959d # v4.2.0
+
       - name: Check terraform-docs
-        uses: terraform-docs/gh-actions@6de6da0cefcc6b4b7a5cbea4d79d97060733093c # v1.4.1
-        with:
-          find-dir: modules/${{ matrix.directory }}
-          output-file: README.md
-          output-method: inject
-          git-push: "false"
-          fail-on-diff: "true"
+        working-directory: modules/${{ matrix.directory }}
+        run: |
+          terraform-docs .
+          git diff --exit-code README.md
