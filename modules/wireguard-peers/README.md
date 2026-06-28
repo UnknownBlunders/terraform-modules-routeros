@@ -8,7 +8,8 @@ This module generates WireGuard key pairs for each peer and creates the correspo
 
 ```hcl
 module "wireguard_peers" {
-  source = "./modules/mikrotik-wireguard-peers"
+  source = "git::https://github.com/mirceanton/terraform-modules-routeros.git//modules/wireguard-peers?ref=main"
+  # source = "oci://ghcr.io/mirceanton/terraform-modules-routeros/wireguard-peers:latest"
 
   interface = "wireguard1"
 

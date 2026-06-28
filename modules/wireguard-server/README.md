@@ -8,7 +8,8 @@ This module provisions a WireGuard interface along with its associated IP addres
 
 ```hcl
 module "wireguard" {
-  source = "path/to/modules/mikrotik-wireguard-server"
+  source = "git::https://github.com/mirceanton/terraform-modules-routeros.git//modules/wireguard-server?ref=main"
+  # source = "oci://ghcr.io/mirceanton/terraform-modules-routeros/wireguard-server:latest"
 
   name        = "wg0"
   address     = "10.0.0.1/24"

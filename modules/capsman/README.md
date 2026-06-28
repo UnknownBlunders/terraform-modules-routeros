@@ -17,7 +17,8 @@ CAPsMAN is MikroTik's centralized wireless management system. It allows a single
 
 ```hcl
 module "capsman" {
-  source = "./modules/mikrotik-capsman"
+  source = "git::https://github.com/mirceanton/terraform-modules-routeros.git//modules/capsman?ref=main"
+  # source = "oci://ghcr.io/mirceanton/terraform-modules-routeros/capsman:latest"
 
   country        = "United States"
   upgrade_policy = "suggest-same-version"

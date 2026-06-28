@@ -6,7 +6,8 @@ A Terraform module for configuring MikroTik (RouterOS) devices with a consistent
 
 ```hcl
 module "mikrotik" {
-  source = "./modules/mikrotik-base"
+  source = "git::https://github.com/mirceanton/terraform-modules-routeros.git//modules/base?ref=main"
+  # source = "oci://ghcr.io/mirceanton/terraform-modules-routeros/base:latest"
 
   hostname              = "my-router"
   certificate_common_name = "my-router.local"

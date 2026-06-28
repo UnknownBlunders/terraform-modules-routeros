@@ -6,7 +6,8 @@ Terraform module for configuring the DNS server on a MikroTik RouterOS device. I
 
 ```hcl
 module "dns_server" {
-  source = "./modules/mikrotik-dns-server"
+  source = "git::https://github.com/mirceanton/terraform-modules-routeros.git//modules/dns-server?ref=main"
+  # source = "oci://ghcr.io/mirceanton/terraform-modules-routeros/dns-server:latest"
 
   # Upstream resolvers
   upstream_dns = ["1.1.1.1", "1.0.0.1", "8.8.8.8"]

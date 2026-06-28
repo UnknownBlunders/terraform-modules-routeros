@@ -8,7 +8,8 @@ MikroTik IP Cloud provides Dynamic DNS (DDNS), public IP detection, and the opti
 
 ```hcl
 module "cloud" {
-  source = "./modules/mikrotik-cloud"
+  source = "git::https://github.com/mirceanton/terraform-modules-routeros.git//modules/cloud?ref=main"
+  # source = "oci://ghcr.io/mirceanton/terraform-modules-routeros/cloud:latest"
 
   ddns_enabled         = true
   ddns_update_interval = "5m"

@@ -8,7 +8,8 @@ This module creates a complete DHCP server setup including the interface IP addr
 
 ```hcl
 module "dhcp_trusted" {
-  source = "./modules/mikrotik-dhcp-server"
+  source = "git::https://github.com/mirceanton/terraform-modules-routeros.git//modules/dhcp-server?ref=main"
+  # source = "oci://ghcr.io/mirceanton/terraform-modules-routeros/dhcp-server:latest"
 
   interface = "vlan-trusted"
   address   = "192.168.10.1/24"

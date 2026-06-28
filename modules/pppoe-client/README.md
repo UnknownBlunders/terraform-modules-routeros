@@ -8,7 +8,8 @@ This module creates and configures a `routeros_interface_pppoe_client` resource,
 
 ```hcl
 module "pppoe_wan" {
-  source = "./modules/mikrotik-pppoe-client"
+  source = "git::https://github.com/mirceanton/terraform-modules-routeros.git//modules/pppoe-client?ref=main"
+  # source = "oci://ghcr.io/mirceanton/terraform-modules-routeros/pppoe-client:latest"
 
   interface         = "ether1"
   name              = "pppoe-wan"
@@ -24,7 +25,8 @@ module "pppoe_wan" {
 
 ```hcl
 module "pppoe_wan" {
-  source = "./modules/mikrotik-pppoe-client"
+  source = "git::https://github.com/mirceanton/terraform-modules-routeros.git//modules/pppoe-client?ref=main"
+  # source = "oci://ghcr.io/mirceanton/terraform-modules-routeros/pppoe-client:latest"
 
   interface         = "ether1"
   name              = "pppoe-wan"

@@ -6,7 +6,8 @@ A Terraform module for managing MikroTik RouterOS firewall configuration, includ
 
 ```hcl
 module "firewall" {
-  source = "./modules/mikrotik-firewall"
+  source = "git::https://github.com/mirceanton/terraform-modules-routeros.git//modules/firewall?ref=main"
+  # source = "oci://ghcr.io/mirceanton/terraform-modules-routeros/firewall:latest"
 
   # --- Interface Lists ---
   interface_lists = {
