@@ -27,27 +27,27 @@ output "wireguard_public_key" {
 ## Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
 | <a name="requirement_routeros"></a> [routeros](#requirement\_routeros) | >= 1.0 |
 
 ## Providers
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="provider_routeros"></a> [routeros](#provider\_routeros) | >= 1.0 |
 
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [routeros_interface_wireguard.this](https://registry.terraform.io/providers/terraform-routeros/routeros/latest/docs/resources/interface_wireguard) | resource |
 | [routeros_ip_address.this](https://registry.terraform.io/providers/terraform-routeros/routeros/latest/docs/resources/ip_address) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_address"></a> [address](#input\_address) | The IP address in CIDR notation to assign to the WireGuard interface (e.g. "10.0.0.1/24"). | `string` | n/a | yes |
 | <a name="input_comment"></a> [comment](#input\_comment) | An optional comment or description for the WireGuard interface and its IP address. | `string` | `""` | no |
 | <a name="input_disabled"></a> [disabled](#input\_disabled) | Whether the WireGuard interface should be disabled. | `bool` | `false` | no |
@@ -59,7 +59,7 @@ output "wireguard_public_key" {
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_address"></a> [address](#output\_address) | The IP address in CIDR notation assigned to the WireGuard interface. |
 | <a name="output_listen_port"></a> [listen\_port](#output\_listen\_port) | The UDP port the WireGuard interface is listening on. |
 | <a name="output_mtu"></a> [mtu](#output\_mtu) | The MTU configured on the WireGuard interface. |

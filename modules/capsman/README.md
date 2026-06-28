@@ -74,7 +74,7 @@ For example, if you define `guest` and `home_2ghz` on the `2ghz-ax` band, `guest
 ## Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
 | <a name="requirement_random"></a> [random](#requirement\_random) | >= 3.0 |
 | <a name="requirement_routeros"></a> [routeros](#requirement\_routeros) | >= 1.99.0 |
@@ -82,14 +82,14 @@ For example, if you define `guest` and `home_2ghz` on the `2ghz-ax` band, `guest
 ## Providers
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="provider_random"></a> [random](#provider\_random) | >= 3.0 |
 | <a name="provider_routeros"></a> [routeros](#provider\_routeros) | >= 1.99.0 |
 
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [random_pet.wifi_passphrase](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/pet) | resource |
 | [routeros_wifi_capsman.settings](https://registry.terraform.io/providers/terraform-routeros/routeros/latest/docs/resources/wifi_capsman) | resource |
 | [routeros_wifi_channel.this](https://registry.terraform.io/providers/terraform-routeros/routeros/latest/docs/resources/wifi_channel) | resource |
@@ -101,7 +101,7 @@ For example, if you define `guest` and `home_2ghz` on the `2ghz-ax` band, `guest
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_authentication_types"></a> [authentication\_types](#input\_authentication\_types) | List of authentication types for WiFi security profiles. Common values: 'wpa2-psk', 'wpa3-psk'. | `list(string)` | <pre>[<br/>  "wpa2-psk",<br/>  "wpa3-psk"<br/>]</pre> | no |
 | <a name="input_capsman_interfaces"></a> [capsman\_interfaces](#input\_capsman\_interfaces) | List of interfaces where CAPsMAN will listen for CAP connections. | `list(string)` | <pre>[<br/>  "all"<br/>]</pre> | no |
 | <a name="input_channel_settings"></a> [channel\_settings](#input\_channel\_settings) | Per-band channel configuration overrides for fine-tuning radio behavior.<br/>The map key must match one of the bands used in wifi\_networks.<br/><br/>Example:<br/>{<br/>  "5ghz-ax" = {<br/>    skip\_dfs\_channels = "all"<br/>    width             = "80mhz"<br/>  }<br/>} | <pre>map(object({<br/>    frequency         = optional(list(string))<br/>    skip_dfs_channels = optional(string)<br/>    width             = optional(string)<br/>    reselect_interval = optional(string)<br/>    reselect_time     = optional(string)<br/>  }))</pre> | `{}` | no |
@@ -114,7 +114,7 @@ For example, if you define `guest` and `home_2ghz` on the `2ghz-ax` band, `guest
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_bands_in_use"></a> [bands\_in\_use](#output\_bands\_in\_use) | List of unique radio bands configured across all WiFi networks. |
 | <a name="output_configured_ssids"></a> [configured\_ssids](#output\_configured\_ssids) | List of all configured WiFi SSIDs. |
 | <a name="output_provisioning_rule_count"></a> [provisioning\_rule\_count](#output\_provisioning\_rule\_count) | Number of CAPsMAN provisioning rules created (one per band). |

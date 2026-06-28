@@ -59,20 +59,20 @@ module "dns_server" {
 ## Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
 | <a name="requirement_routeros"></a> [routeros](#requirement\_routeros) | >= 1.99.1 |
 
 ## Providers
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="provider_routeros"></a> [routeros](#provider\_routeros) | >= 1.99.1 |
 
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [routeros_ip_dns.server](https://registry.terraform.io/providers/terraform-routeros/routeros/latest/docs/resources/ip_dns) | resource |
 | [routeros_ip_dns_adlist.adlist](https://registry.terraform.io/providers/terraform-routeros/routeros/latest/docs/resources/ip_dns_adlist) | resource |
 | [routeros_ip_dns_record.static](https://registry.terraform.io/providers/terraform-routeros/routeros/latest/docs/resources/ip_dns_record) | resource |
@@ -80,7 +80,7 @@ module "dns_server" {
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_adlist_ssl_verify"></a> [adlist\_ssl\_verify](#input\_adlist\_ssl\_verify) | Whether to verify SSL certificates when fetching the adblock list. Only relevant when adlist\_url is set. | `bool` | `false` | no |
 | <a name="input_adlist_url"></a> [adlist\_url](#input\_adlist\_url) | URL to an adblock list for DNS-based ad blocking. Set to null to disable ad blocking. | `string` | `null` | no |
 | <a name="input_allow_remote_requests"></a> [allow\_remote\_requests](#input\_allow\_remote\_requests) | Whether to allow DNS requests from remote hosts (clients on the network). Set to false to restrict DNS to the router itself. | `bool` | `true` | no |
@@ -92,7 +92,7 @@ module "dns_server" {
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_adlist_enabled"></a> [adlist\_enabled](#output\_adlist\_enabled) | Whether DNS-based ad blocking is enabled. |
 | <a name="output_allow_remote_requests"></a> [allow\_remote\_requests](#output\_allow\_remote\_requests) | Whether remote DNS requests are allowed. |
 | <a name="output_cache_size"></a> [cache\_size](#output\_cache\_size) | The configured DNS cache size in KiB. |

@@ -97,20 +97,20 @@ Use gaps between order values (e.g., 100, 200, 300) to leave room for inserting 
 ## Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
 | <a name="requirement_routeros"></a> [routeros](#requirement\_routeros) | >= 1.99.1 |
 
 ## Providers
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="provider_routeros"></a> [routeros](#provider\_routeros) | >= 1.99.1 |
 
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [routeros_interface_list.this](https://registry.terraform.io/providers/terraform-routeros/routeros/latest/docs/resources/interface_list) | resource |
 | [routeros_interface_list_member.this](https://registry.terraform.io/providers/terraform-routeros/routeros/latest/docs/resources/interface_list_member) | resource |
 | [routeros_ip_firewall_addr_list.this](https://registry.terraform.io/providers/terraform-routeros/routeros/latest/docs/resources/ip_firewall_addr_list) | resource |
@@ -122,7 +122,7 @@ Use gaps between order values (e.g., 100, 200, 300) to leave room for inserting 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_address_lists"></a> [address\_lists](#input\_address\_lists) | Map of address lists to create with their member addresses.<br/>Each key becomes the address list name on the router.<br/><br/>Example:<br/>{<br/>  wireguard-clients = {<br/>    comment   = "WireGuard client IPs"<br/>    addresses = ["10.10.0.2", "10.10.0.3"]<br/>  }<br/>  trusted-hosts = {<br/>    comment   = "Trusted management hosts"<br/>    addresses = ["192.168.1.10/32"]<br/>  }<br/>} | <pre>map(object({<br/>    comment   = optional(string, "")<br/>    addresses = list(string)<br/>  }))</pre> | `{}` | no |
 | <a name="input_filter_rules"></a> [filter\_rules](#input\_filter\_rules) | Map of firewall filter rules to create. Rules are ordered by the 'order'<br/>field, which determines their placement in the RouterOS filter chain. Lower<br/>numbers are evaluated first. The key is used as a human-readable identifier<br/>and is included in the auto-generated comment if no explicit comment is<br/>provided.<br/><br/>Example:<br/>{<br/>  "accept-established" = {<br/>    chain            = "input"<br/>    action           = "accept"<br/>    connection\_state = "established,related,untracked"<br/>    order            = 100<br/>  }<br/>  "drop-invalid" = {<br/>    chain            = "input"<br/>    action           = "drop"<br/>    connection\_state = "invalid"<br/>    order            = 200<br/>  }<br/>} | <pre>map(object({<br/>    chain              = string<br/>    action             = string<br/>    order              = number<br/>    comment            = optional(string)<br/>    connection_state   = optional(string)<br/>    src_address        = optional(string)<br/>    dst_address        = optional(string)<br/>    src_address_list   = optional(string)<br/>    dst_address_list   = optional(string)<br/>    src_port           = optional(string)<br/>    dst_port           = optional(string)<br/>    protocol           = optional(string)<br/>    in_interface       = optional(string)<br/>    out_interface      = optional(string)<br/>    in_interface_list  = optional(string)<br/>    out_interface_list = optional(string)<br/>    hw_offload         = optional(bool)<br/>    log                = optional(bool)<br/>    log_prefix         = optional(string)<br/>    jump_target        = optional(string)<br/>  }))</pre> | `{}` | no |
 | <a name="input_interface_lists"></a> [interface\_lists](#input\_interface\_lists) | Map of interface lists to create with their members.<br/>Each key becomes the interface list name on the router.<br/><br/>Example:<br/>{<br/>  WAN = {<br/>    comment    = "All Public-Facing Interfaces"<br/>    interfaces = ["ether1"]<br/>  }<br/>  LAN = {<br/>    comment    = "All Local Interfaces"<br/>    interfaces = ["bridge", "vlan-trusted", "vlan-iot"]<br/>  }<br/>} | <pre>map(object({<br/>    comment    = optional(string, "")<br/>    interfaces = list(string)<br/>  }))</pre> | `{}` | no |
@@ -131,7 +131,7 @@ Use gaps between order values (e.g., 100, 200, 300) to leave room for inserting 
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_address_list_ids"></a> [address\_list\_ids](#output\_address\_list\_ids) | Map of address list entry keys (list/address) to their RouterOS resource IDs. |
 | <a name="output_address_list_names"></a> [address\_list\_names](#output\_address\_list\_names) | Distinct address list names created by this module. |
 | <a name="output_filter_rule_count"></a> [filter\_rule\_count](#output\_filter\_rule\_count) | Total number of filter rules managed by this module. |

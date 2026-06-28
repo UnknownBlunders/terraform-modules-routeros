@@ -55,7 +55,7 @@ module "mikrotik" {
 ## Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
 | <a name="requirement_random"></a> [random](#requirement\_random) | >= 3.0 |
 | <a name="requirement_routeros"></a> [routeros](#requirement\_routeros) | >= 1.99.1 |
@@ -63,14 +63,14 @@ module "mikrotik" {
 ## Providers
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="provider_random"></a> [random](#provider\_random) | >= 3.0 |
 | <a name="provider_routeros"></a> [routeros](#provider\_routeros) | >= 1.99.1 |
 
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [random_password.passwords](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
 | [routeros_interface_bonding.bonds](https://registry.terraform.io/providers/terraform-routeros/routeros/latest/docs/resources/interface_bonding) | resource |
 | [routeros_interface_bridge.bridge](https://registry.terraform.io/providers/terraform-routeros/routeros/latest/docs/resources/interface_bridge) | resource |
@@ -97,7 +97,7 @@ module "mikrotik" {
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_bandwidth_server_enabled"></a> [bandwidth\_server\_enabled](#input\_bandwidth\_server\_enabled) | Whether to enable the bandwidth test server. | `bool` | `false` | no |
 | <a name="input_bond_interfaces"></a> [bond\_interfaces](#input\_bond\_interfaces) | Map of bond interfaces to configure. Keys are bond names. Supports LACP (802.3ad), balance-rr, balance-xor, broadcast, active-backup, balance-tlb, and balance-alb modes. | <pre>map(object({<br/>    comment              = optional(string, "")<br/>    slaves               = list(string)<br/>    mode                 = optional(string, "802.3ad")<br/>    transmit_hash_policy = optional(string, "layer-2-and-3")<br/>    mtu                  = optional(number, 1500)<br/>    tagged               = optional(list(string))<br/>    untagged             = optional(string)<br/>  }))</pre> | `{}` | no |
 | <a name="input_bridge_comment"></a> [bridge\_comment](#input\_bridge\_comment) | Comment for the bridge interface. | `string` | `""` | no |
@@ -127,7 +127,7 @@ module "mikrotik" {
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_bridge_id"></a> [bridge\_id](#output\_bridge\_id) | The resource ID of the bridge interface. |
 | <a name="output_bridge_name"></a> [bridge\_name](#output\_bridge\_name) | The name of the bridge interface. |
 | <a name="output_ca_certificate_name"></a> [ca\_certificate\_name](#output\_ca\_certificate\_name) | The name of the root CA certificate. |

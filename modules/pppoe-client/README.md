@@ -47,26 +47,26 @@ module "pppoe_wan" {
 ## Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
 | <a name="requirement_routeros"></a> [routeros](#requirement\_routeros) | >= 1.99.1 |
 
 ## Providers
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="provider_routeros"></a> [routeros](#provider\_routeros) | >= 1.99.1 |
 
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [routeros_interface_pppoe_client.this](https://registry.terraform.io/providers/terraform-routeros/routeros/latest/docs/resources/interface_pppoe_client) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_ac_name"></a> [ac\_name](#input\_ac\_name) | PPPoE Access Concentrator name. Used to connect to a specific access concentrator. | `string` | `null` | no |
 | <a name="input_add_default_route"></a> [add\_default\_route](#input\_add\_default\_route) | Whether to add a default route when connected. | `bool` | `true` | no |
 | <a name="input_comment"></a> [comment](#input\_comment) | Optional comment or description for the PPPoE client interface. | `string` | `""` | no |
@@ -85,7 +85,7 @@ module "pppoe_wan" {
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_disabled"></a> [disabled](#output\_disabled) | Whether the PPPoE client interface is disabled. |
 | <a name="output_id"></a> [id](#output\_id) | The unique identifier of the PPPoE client resource. |
 | <a name="output_name"></a> [name](#output\_name) | The name of the PPPoE client interface. |

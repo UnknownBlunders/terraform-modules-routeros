@@ -43,20 +43,20 @@ module "dhcp_trusted" {
 ## Requirements
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
 | <a name="requirement_routeros"></a> [routeros](#requirement\_routeros) | >= 1.80.0 |
 
 ## Providers
 
 | Name | Version |
-|------|---------|
+| ---- | ------- |
 | <a name="provider_routeros"></a> [routeros](#provider\_routeros) | >= 1.80.0 |
 
 ## Resources
 
 | Name | Type |
-|------|------|
+| ---- | ---- |
 | [routeros_ip_address.this](https://registry.terraform.io/providers/terraform-routeros/routeros/latest/docs/resources/ip_address) | resource |
 | [routeros_ip_dhcp_server.this](https://registry.terraform.io/providers/terraform-routeros/routeros/latest/docs/resources/ip_dhcp_server) | resource |
 | [routeros_ip_dhcp_server_lease.this](https://registry.terraform.io/providers/terraform-routeros/routeros/latest/docs/resources/ip_dhcp_server_lease) | resource |
@@ -67,7 +67,7 @@ module "dhcp_trusted" {
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
+| ---- | ----------- | ---- | ------- | :------: |
 | <a name="input_address"></a> [address](#input\_address) | IP address in CIDR notation to assign to the interface (e.g., '192.168.1.1/24'). | `string` | n/a | yes |
 | <a name="input_authoritative"></a> [authoritative](#input\_authoritative) | Whether the DHCP server is authoritative. When set to 'yes', the server will send a NAK to clients requesting an address that is not in the pool. | `string` | `"yes"` | no |
 | <a name="input_client_mac_limit"></a> [client\_mac\_limit](#input\_client\_mac\_limit) | Maximum number of MAC addresses allowed per client. | `number` | `1` | no |
@@ -89,7 +89,7 @@ module "dhcp_trusted" {
 ## Outputs
 
 | Name | Description |
-|------|-------------|
+| ---- | ----------- |
 | <a name="output_dns_record_count"></a> [dns\_record\_count](#output\_dns\_record\_count) | The number of DNS records created for static leases. |
 | <a name="output_gateway"></a> [gateway](#output\_gateway) | The gateway IP address provided to DHCP clients. |
 | <a name="output_network_address"></a> [network\_address](#output\_network\_address) | The network address in CIDR notation served by this DHCP server. |
