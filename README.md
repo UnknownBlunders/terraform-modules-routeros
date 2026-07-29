@@ -1,5 +1,7 @@
 # Terraform/OpenTofu Modules: RouterOS
 
+This is a fork of [mirceanton's routeros modules repo](https://github.com/mirceanton/terraform-modules-routeros) that I have customized for my network.
+
 A collection of reusable [OpenTofu](https://opentofu.org/) / [Terraform](https://www.terraform.io/) modules for configuring [MikroTik RouterOS](https://mikrotik.com/) devices using the [`routeros`](https://registry.terraform.io/providers/terraform-routeros/routeros/latest) provider.
 
 ## Modules
@@ -18,33 +20,19 @@ A collection of reusable [OpenTofu](https://opentofu.org/) / [Terraform](https:/
 
 ## Usage
 
-### From OCI Registry (OpenTofu >= 1.8)
-
-```hcl
-module "base" {
-  source  = "oci://ghcr.io/mirceanton/terraform-routeros-modules/base"
-  version = "1.0.0"
-
-  hostname = "my-router"
-  # ...
-}
-```
-
 ### From Git
 
 ```hcl
 module "base" {
-  source = "git::https://github.com/mirceanton/terraform-routeros-modules.git//modules/base?ref=v1.0.0"
+  source = "git::https://github.com/unknownblunders/terraform-routeros-modules.git//modules/base?ref=v1.0.0"
 
   hostname = "my-router"
   # ...
 }
 ```
 
-## Versioning
-
-This repository uses a single [semver](https://semver.org/) tag (e.g., `v1.0.0`) for all modules. All modules in a release share the same version.
-
 ## License
 
-MIT - see [LICENSE](LICENSE).
+[mirceanton's original repo](https://github.com/mirceanton/terraform-modules-routeros) used the MIT license. All of my changes are also MIT licensed. See [LICENSE](LICENSE).
+
+Checkout the git log and git blame to see what changes I've made.

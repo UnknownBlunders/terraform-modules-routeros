@@ -1,5 +1,0 @@
-[tools]
-opentofu = "latest"
-terraform-docs = "latest"
-oras = "latest"
-actionlint = "latest"
