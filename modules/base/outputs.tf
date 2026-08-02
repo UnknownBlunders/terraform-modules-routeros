@@ -22,13 +22,21 @@ output "vlan_ids" {
 }
 
 output "vlan_interfaces" {
-  description = "Map of VLAN names to their interface details (name, VLAN ID, MTU)."
+  description = "Map of VLAN names to their interface details (name, VLAN ID, MTU, address)."
   value = {
     for k, v in routeros_interface_vlan.vlans : v.name => {
       name    = v.name
       vlan_id = v.vlan_id
       mtu     = v.mtu
+      address = try(routeros_ip_address.vlan_addresses[k].address, null)
     }
+  }
+}
+
+output "vlan_addresses" {
+  description = "Map of VLAN names to the static IP address (in CIDR notation) assigned to their interface. Only includes VLANs that declared an 'address'."
+  value = {
+    for k, v in routeros_ip_address.vlan_addresses : var.vlans[k].name => v.address
   }
 }
 

@@ -2,7 +2,7 @@
 
 Terraform module for configuring a DHCP server on a MikroTik RouterOS device.
 
-This module creates a complete DHCP server setup including the interface IP address, IP pool, DHCP network, DHCP server, static leases, and optional DNS records for static leases. It is designed for per-VLAN or per-interface DHCP deployments.
+This module creates a complete DHCP server setup including the IP pool, DHCP network, DHCP server, static leases, and optional DNS records for static leases. It is designed for per-VLAN or per-interface DHCP deployments. The interface IP address itself is expected to be assigned elsewhere (for example, via the `base` module's `vlans` variable).
 
 ## Usage
 
@@ -12,7 +12,6 @@ module "dhcp_trusted" {
   # source = "oci://ghcr.io/mirceanton/terraform-modules-routeros/dhcp-server:latest"
 
   interface = "vlan-trusted"
-  address   = "192.168.10.1/24"
   network   = "192.168.10.0/24"
   dhcp_pool = ["192.168.10.100-192.168.10.200"]
 

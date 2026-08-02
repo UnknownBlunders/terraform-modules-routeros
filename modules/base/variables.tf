@@ -183,15 +183,23 @@ variable "vlans" {
     name    = string
     vlan_id = number
     mtu     = optional(number, 1500)
+    address = optional(string)
   }))
   default     = {}
-  description = "Map of VLANs to configure. Each entry requires a human-readable name and a VLAN ID."
+  description = "Map of VLANs to configure. Each entry requires a human-readable name and a VLAN ID. Optionally set 'address' to assign a static IP in CIDR notation (e.g., '192.168.1.1/24') to the VLAN interface."
 
   validation {
     condition = alltrue([
       for k, v in var.vlans : v.vlan_id >= 1 && v.vlan_id <= 4094
     ])
     error_message = "VLAN IDs must be between 1 and 4094."
+  }
+
+  validation {
+    condition = alltrue([
+      for k, v in var.vlans : v.address == null || can(cidrhost(v.address, 0))
+    ])
+    error_message = "VLAN 'address' must be in valid CIDR notation (e.g., '192.168.1.1/24')."
   }
 }
 

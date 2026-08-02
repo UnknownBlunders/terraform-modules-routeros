@@ -100,3 +100,16 @@ resource "routeros_interface_bridge_vlan" "bridge_vlans" {
   tagged   = each.value.tagged
   untagged = each.value.untagged
 }
+
+# =================================================================================================
+# VLAN Interface IP Addresses
+# Assign a static IP to any VLAN interface that declares an 'address' in CIDR notation.
+# =================================================================================================
+resource "routeros_ip_address" "vlan_addresses" {
+  for_each = { for k, v in var.vlans : k => v if v.address != null }
+
+  address   = each.value.address
+  interface = routeros_interface_vlan.vlans[each.key].name
+  network   = cidrhost(each.value.address, 0)
+  comment   = each.value.name
+}

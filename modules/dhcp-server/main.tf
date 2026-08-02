@@ -15,14 +15,6 @@ locals {
   }
 }
 
-# --- IP Address ---
-
-resource "routeros_ip_address" "this" {
-  address   = var.address
-  interface = var.interface
-  network   = split("/", var.network)[0]
-}
-
 # --- DHCP Pool ---
 
 resource "routeros_ip_pool" "this" {

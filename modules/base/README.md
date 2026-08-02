@@ -19,11 +19,12 @@ module "mikrotik" {
     ether3 = { comment = "IOT", untagged = "iot" }
   }
 
-  # VLANs
+  # VLANs. Set `address` to assign a static IP to the VLAN interface;
+  # leave it unset for VLANs that should not have an IP on this device.
   vlans = {
     servers = { name = "servers", vlan_id = 10 }
-    mgmt    = { name = "mgmt",   vlan_id = 20 }
-    iot     = { name = "iot",    vlan_id = 30, mtu = 1500 }
+    mgmt    = { name = "mgmt",    vlan_id = 20, address = "192.168.20.1/24" }
+    iot     = { name = "iot",     vlan_id = 30, mtu = 1500 }
   }
 
   # Users

@@ -30,16 +30,6 @@ variable "comment" {
 
 # --- Network Configuration ---
 
-variable "address" {
-  description = "IP address in CIDR notation to assign to the interface (e.g., '192.168.1.1/24')."
-  type        = string
-
-  validation {
-    condition     = can(cidrhost(var.address, 0))
-    error_message = "The address must be in valid CIDR notation (e.g., '192.168.1.1/24')."
-  }
-}
-
 variable "network" {
   description = "Network address in CIDR notation (e.g., '192.168.1.0/24')."
   type        = string
