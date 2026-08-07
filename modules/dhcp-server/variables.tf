@@ -77,7 +77,7 @@ variable "dns_servers" {
 variable "domain" {
   description = "Domain name to provide to DHCP clients."
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "lease_time" {
@@ -138,5 +138,5 @@ variable "static_leases" {
 variable "create_dns_records" {
   description = "Whether to create static DNS A records for each static lease. Can be overridden per-lease via the 'create_dns_record' attribute."
   type        = bool
-  default     = true
+  default     = false
 }
