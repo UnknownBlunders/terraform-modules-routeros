@@ -41,17 +41,6 @@ output "vlan_addresses" {
 }
 
 # =================================================================================================
-# User Outputs
-# =================================================================================================
-output "user_passwords" {
-  description = "Map of usernames to their passwords (generated or provided)."
-  value = {
-    for k, v in var.users : k => v.password != null ? v.password : random_password.passwords[k].result
-  }
-  sensitive = true
-}
-
-# =================================================================================================
 # Certificate Outputs
 # =================================================================================================
 output "certificate_name" {

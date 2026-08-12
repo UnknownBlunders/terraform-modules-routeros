@@ -10,5 +10,9 @@ terraform {
       source  = "hashicorp/random"
       version = ">= 3.0"
     }
+    onepassword = {
+      source  = "1password/onepassword"
+      version = ">=3.3.1"
+    }
   }
 }

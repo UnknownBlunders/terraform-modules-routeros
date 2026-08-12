@@ -11,13 +11,14 @@ resource "routeros_system_user_group" "groups" {
 
 
 # =================================================================================================
-# Random Passwords
+# 1Password Password
 # =================================================================================================
-resource "random_password" "passwords" {
-  for_each = { for k, v in var.users : k => v if v.password == null }
 
-  length  = 16
-  special = true
+data "onepassword_item" "password" {
+  for_each = var.users
+
+  vault = each.value.op_vault
+  title = "${var.hostname}-${var.model}-${each.value.op_item_title_suffix}"
 }
 
 # =================================================================================================
@@ -28,7 +29,7 @@ resource "routeros_system_user" "users" {
 
   name               = each.key
   group              = each.value.group
-  password           = each.value.password != null ? each.value.password : random_password.passwords[each.key].result
+  password           = data.onepassword_item.password[each.key].password
   comment            = each.value.comment
   address            = each.value.address
   inactivity_policy  = each.value.inactivity_policy

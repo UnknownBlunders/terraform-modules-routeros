@@ -6,6 +6,11 @@ variable "hostname" {
   description = "The hostname (system identity) to assign to this MikroTik device."
 }
 
+variable "model" {
+  type        = string
+  description = "The model of device. This, combined with the hostname, is used to derive the base names of 1Password secrets."
+}
+
 variable "timezone" {
   type        = string
   default     = "UTC"
@@ -247,13 +252,14 @@ variable "groups" {
 
 variable "users" {
   type = map(object({
-    group              = string
-    password           = optional(string)
-    comment            = optional(string, "")
-    address            = optional(string, "")
-    inactivity_policy  = optional(string)
-    inactivity_timeout = optional(string)
+    group                = string
+    op_vault             = string
+    op_item_title_suffix = string
+    comment              = optional(string, "")
+    address              = optional(string, "")
+    inactivity_policy    = optional(string)
+    inactivity_timeout   = optional(string)
   }))
   default     = {}
-  description = "Map of users to create. Keys are usernames. If password is omitted, a random 16-character password is generated."
+  description = "Map of users to create. Keys are usernames. Passwords are retrieved from a 1Password vault item"
 }
