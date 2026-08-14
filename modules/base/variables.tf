@@ -263,3 +263,47 @@ variable "users" {
   default     = {}
   description = "Map of users to create. Keys are usernames. Passwords are retrieved from a 1Password vault item"
 }
+
+# =================================================================================================
+# Default Route and DNS
+# =================================================================================================
+
+variable "default_route" {
+  type        = string
+  default     = null
+  description = "The Mikrotik device's default ipv4 route. Will create a route to 0.0.0.0/0 via the specified address. This should only be set on non Gateway devices."
+}
+
+variable "dns_servers" {
+  type        = list(string)
+  default     = null
+  description = "The Mikrotik device's DNS servers. This should only be set on non Gateway devices."
+}
+
+variable "dns_allow_remote_requests" {
+  type        = bool
+  default     = false
+  description = "Whether to allow DNS requests from remote hosts. Should be false for devices except the router, which has DNS configured in DNS module."
+}
+
+variable "dns_cache_size" {
+  type        = number
+  default     = 2048
+  description = "Size of the DNS cache in KiB. Higher values use more memory but can improve performance."
+
+  validation {
+    condition     = var.dns_cache_size > 0
+    error_message = "Cache size must be a positive number."
+  }
+}
+
+variable "dns_cache_max_ttl" {
+  type        = string
+  default     = "1d"
+  description = "Maximum time-to-live for cached DNS entries. Accepts RouterOS duration format (e.g., '1d', '12h', '30m', '3600')."
+
+  validation {
+    condition     = can(regex("^[0-9]+(d|h|w|m|s)?$", var.dns_cache_max_ttl))
+    error_message = "Cache max TTL must be a valid RouterOS duration (e.g., '1d', '12h', '30m', '3600')."
+  }
+}

@@ -31,7 +31,7 @@ variable "cache_max_ttl" {
   description = "Maximum time-to-live for cached DNS entries. Accepts RouterOS duration format (e.g., '1d', '12h', '30m', '3600')."
 
   validation {
-    condition     = can(regex("^[0-9]+(d|h|m|s)?$", var.cache_max_ttl))
+    condition     = can(regex("^[0-9]+(d|h|w|m|s)?$", var.cache_max_ttl))
     error_message = "Cache max TTL must be a valid RouterOS duration (e.g., '1d', '12h', '30m', '3600')."
   }
 }
