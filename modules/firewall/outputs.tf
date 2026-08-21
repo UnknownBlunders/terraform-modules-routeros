@@ -45,3 +45,27 @@ output "filter_rule_ids" {
   description = "Map of filter rule sort keys to their RouterOS resource IDs."
   value       = { for k, v in routeros_ip_firewall_filter.this : k => v.id }
 }
+
+# --- IPv6 Address List Outputs -------------------------------------------------
+
+output "ipv6_address_list_names" {
+  description = "Distinct IPv6 address list names created by this module."
+  value       = distinct([for k, v in routeros_ipv6_firewall_addr_list.this : v.list])
+}
+
+output "ipv6_address_list_ids" {
+  description = "Map of IPv6 address list entry keys (list/address) to their RouterOS resource IDs."
+  value       = { for k, v in routeros_ipv6_firewall_addr_list.this : k => v.id }
+}
+
+# --- IPv6 Filter Rule Outputs -------------------------------------------------
+
+output "ipv6_filter_rule_count" {
+  description = "Total number of IPv6 filter rules managed by this module."
+  value       = length(var.ipv6_filter_rules)
+}
+
+output "ipv6_filter_rule_ids" {
+  description = "Map of IPv6 filter rule sort keys to their RouterOS resource IDs."
+  value       = { for k, v in routeros_ipv6_firewall_filter.this : k => v.id }
+}
