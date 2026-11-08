@@ -2,7 +2,7 @@ resource "routeros_interface_wireguard_peer" "this" {
   for_each = var.peers
 
   interface            = var.interface
-  public_key           = data.onepassword_item.peer-key.client-public-key.value
+  public_key           = data.onepassword_item.peer-key[each.key].section_map[""].field_map["client-public-key"].value
   allowed_address      = each.value.allowed_address
   comment              = each.value.comment
   endpoint_address     = each.value.endpoint_address
